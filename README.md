@@ -10,7 +10,7 @@ https://www.udesc.br/cct/centro_multiusuario
 
 - [CMU-0 (frontend)](#cmu-0-frontend)
 - [CMU-1 (motosserra)](#cmu-1-motosserra)
-- [CMU-2](#cmu-2)
+- [CMU-2 (marreta)](#cmu-2-marreta)
 - [CMU-3 (chineque)](#cmu-3-chineque)
 - [CMU-4 (esmeril)](#cmu-4-esmeril)
 - [CMU-5 (makita)](#cmu-5-makita)
@@ -176,10 +176,108 @@ lspci | grep -i ethernet
 
 ---
 
-# CMU-2
+# CMU-2 (marreta)
+#############################################################################################
 
-< TEMPORARIAMENTE INDISPONIVEL >
+## MARRETA - Sistema
 
+```bash
+hostnamectl
+ Static hostname: marreta
+       Icon name: computer-desktop
+         Chassis: desktop
+      Machine ID: c434145e60de4c1198803d8bcc530beb
+         Boot ID: dd6314b2429a490fb2699ade23ca445e
+Operating System: Ubuntu 24.04.3 LTS
+          Kernel: Linux 6.8.0-100-generic
+    Architecture: x86-64
+ Hardware Vendor: INTEL
+  Hardware Model: X99
+ Firmware Version: 5.11
+    Firmware Date: Wed 2020-12-30
+     Firmware Age: 5y 1month 3w 1d
+```
+
+## MARRETA - CPUs
+
+```bash
+lscpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  48
+On-line CPU(s) list:                     0-47
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz
+CPU family:                              6
+Model:                                   63
+Thread(s) per core:                      2
+Core(s) per socket:                      12
+Socket(s):                               2
+Stepping:                                2
+CPU max MHz:                             3500.0000
+CPU min MHz:                             1200.0000
+BogoMIPS:                                5188.04
+Virtualization:                          VT-x
+Caches (sum of all):
+  L1d:                                   768 KiB (24 instances)
+  L1i:                                   768 KiB (24 instances)
+  L2:                                    6 MiB (24 instances)
+  L3:                                    60 MiB (2 instances)
+NUMA:
+  NUMA node(s):                          1
+  NUMA node0 CPU(s):                     0-47
+```
+
+## MARRETA - GPU
+
+```bash
+nvidia-smi
+nvidia-smi não encontrado (sem GPU NVIDIA ou driver não instalado)
+```
+
+## MARRETA - Memória
+
+```bash
+sudo dmidecode -t memory
+SMBIOS 3.0.0 present.
+
+Physical Memory Array
+        Location: System Board Or Motherboard
+        Use: System Memory
+        Error Correction Type: Multi-bit ECC
+        Maximum Capacity: 384 GB
+        Number Of Devices: 6
+
+Memory Installed:
+        4 x 16 GB DDR4 2133 MT/s (Micron)
+        Total instalado: 64 GB
+```
+
+## MARRETA - Armazenamento
+
+```bash
+lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT,MODEL,SERIAL
+NAME                        SIZE TYPE FSTYPE      MOUNTPOINT MODEL               SERIAL
+nvme0n1                   931.5G disk                        KINGSTON SNV2S1000G 50026B7686B6DC01
+├─nvme0n1p1                   1G part vfat        /boot/efi
+├─nvme0n1p2                   2G part ext4        /boot
+└─nvme0n1p3               928.5G part LVM2_member
+  └─ubuntu--vg-ubuntu--lv   100G lvm  ext4        /
+```
+
+## MARRETA - Rede
+
+```bash
+lspci | grep -i ethernet
+05:00.0 Ethernet controller: Realtek RTL8111/8168/8411 PCIe Gigabit Ethernet (rev 15)
+06:00.0 Ethernet controller: Realtek RTL8111/8168/8211/8411 PCIe Gigabit Ethernet (rev 15)
+```
+
+#############################################################################################
+
+---
 ---
 
 # CMU-3 (chineque)
